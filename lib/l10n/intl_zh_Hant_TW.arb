@@ -1,3 +1,10 @@
 {
-    "app_name": "LINE Today 克隆"
+  "app_name": "LINE TODAY 克隆",
+  "business": "商業",
+  "entertainment": "娛樂",
+  "general": "一般",
+  "health": "健康",
+  "science": "科學",
+  "sports": "運動",
+  "technology": "科技"
 }

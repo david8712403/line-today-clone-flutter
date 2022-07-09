@@ -50,11 +50,81 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `LINE Today 克隆`
+  /// `LINE TODAY 克隆`
   String get app_name {
     return Intl.message(
-      'LINE Today 克隆',
+      'LINE TODAY 克隆',
       name: 'app_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `商業`
+  String get business {
+    return Intl.message(
+      '商業',
+      name: 'business',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `娛樂`
+  String get entertainment {
+    return Intl.message(
+      '娛樂',
+      name: 'entertainment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `一般`
+  String get general {
+    return Intl.message(
+      '一般',
+      name: 'general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `健康`
+  String get health {
+    return Intl.message(
+      '健康',
+      name: 'health',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `科學`
+  String get science {
+    return Intl.message(
+      '科學',
+      name: 'science',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `運動`
+  String get sports {
+    return Intl.message(
+      '運動',
+      name: 'sports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `科技`
+  String get technology {
+    return Intl.message(
+      '科技',
+      name: 'technology',
       desc: '',
       args: [],
     );

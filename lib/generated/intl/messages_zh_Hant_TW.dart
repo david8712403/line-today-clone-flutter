@@ -22,6 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "app_name": MessageLookupByLibrary.simpleMessage("LINE Today 克隆")
+        "app_name": MessageLookupByLibrary.simpleMessage("LINE TODAY 克隆"),
+        "business": MessageLookupByLibrary.simpleMessage("商業"),
+        "entertainment": MessageLookupByLibrary.simpleMessage("娛樂"),
+        "general": MessageLookupByLibrary.simpleMessage("一般"),
+        "health": MessageLookupByLibrary.simpleMessage("健康"),
+        "science": MessageLookupByLibrary.simpleMessage("科學"),
+        "sports": MessageLookupByLibrary.simpleMessage("運動"),
+        "technology": MessageLookupByLibrary.simpleMessage("科技")
       };
 }

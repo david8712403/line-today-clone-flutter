@@ -1,3 +1,10 @@
 {
-    "app_name": "LINE Today Clone"
+  "app_name": "LINE TODAY Clone",
+  "business": "business",
+  "entertainment": "entertainment",
+  "general": "general",
+  "health": "health",
+  "science": "science",
+  "sports": "sports",
+  "technology": "technology"
 }
