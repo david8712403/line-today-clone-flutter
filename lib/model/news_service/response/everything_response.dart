@@ -4,17 +4,17 @@ import 'package:flutter/foundation.dart';
 
 import 'package:line_today_clone/model/news_service/article.dart';
 
-class NewsEverythingResponse {
+class NewsResponse {
   final int totalResults;
   final List<NewsArticle> articles;
 
-  NewsEverythingResponse({required this.totalResults, required this.articles});
+  NewsResponse({required this.totalResults, required this.articles});
 
-  NewsEverythingResponse copyWith({
+  NewsResponse copyWith({
     int? totalResults,
     List<NewsArticle>? articles,
   }) {
-    return NewsEverythingResponse(
+    return NewsResponse(
       totalResults: totalResults ?? this.totalResults,
       articles: articles ?? this.articles,
     );
@@ -27,8 +27,8 @@ class NewsEverythingResponse {
     };
   }
 
-  factory NewsEverythingResponse.fromMap(Map<String, dynamic> map) {
-    return NewsEverythingResponse(
+  factory NewsResponse.fromMap(Map<String, dynamic> map) {
+    return NewsResponse(
       totalResults: map['totalResults']?.toInt() ?? 0,
       articles: List<NewsArticle>.from(
           map['articles']?.map((x) => NewsArticle.fromMap(x))),
@@ -37,8 +37,8 @@ class NewsEverythingResponse {
 
   String toJson() => json.encode(toMap());
 
-  factory NewsEverythingResponse.fromJson(String source) =>
-      NewsEverythingResponse.fromMap(json.decode(source));
+  factory NewsResponse.fromJson(String source) =>
+      NewsResponse.fromMap(json.decode(source));
 
   @override
   String toString() =>
@@ -48,7 +48,7 @@ class NewsEverythingResponse {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is NewsEverythingResponse &&
+    return other is NewsResponse &&
         other.totalResults == totalResults &&
         listEquals(other.articles, articles);
   }

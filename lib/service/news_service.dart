@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:line_today_clone/model/news_service/request/everything_request.dart';
+import 'package:line_today_clone/model/news_service/request/top_headlines_request.dart';
 import 'package:line_today_clone/model/news_service/response/everything_response.dart';
 import 'package:line_today_clone/model/news_service/response/response_base.dart';
 import 'package:line_today_clone/util/constant.dart';
@@ -45,13 +46,26 @@ class NewsService {
     }));
   }
 
-  static Future<NewsEverythingResponse> fetchEverything(
-      EverythingRequest request) async {
+  static Future<NewsResponse> fetchEverything(EverythingRequest request) async {
+    final requestMap = request.toMap();
+    requestMap.removeWhere((key, value) => value == null);
     final response = await instance.get(
       "/v2/everything",
-      queryParameters: request.toMap(),
+      queryParameters: requestMap,
       options: Options(headers: _headers()),
     );
-    return NewsEverythingResponse.fromMap(response.data);
+    return NewsResponse.fromMap(response.data);
+  }
+
+  static Future<NewsResponse> fetchTopHeadlines(
+      TopHeadlinesRequest request) async {
+    final requestMap = request.toMap();
+    requestMap.removeWhere((key, value) => value == null);
+    final response = await instance.get(
+      "/v2/top-headlines",
+      queryParameters: requestMap,
+      options: Options(headers: _headers()),
+    );
+    return NewsResponse.fromMap(response.data);
   }
 }

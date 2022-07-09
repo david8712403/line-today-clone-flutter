@@ -12,13 +12,9 @@ class MAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     String errorDetail = "Unknown error";
     if (error.response != null) {
-      final status = error.response!.data;
-      if (status is String) {
-        errorDetail = error.response.toString();
-      } else {
-        final detail = NewsResponseBase.fromMap(error.response!.data);
-        errorDetail = detail.message;
-      }
+      // final status = error.response!.data;
+      final detail = NewsResponseBase.fromMap(error.response!.data);
+      errorDetail = detail.message;
     }
     return AlertDialog(
         content: SizedBox(
