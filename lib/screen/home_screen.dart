@@ -57,10 +57,7 @@ class _MyHomePageState extends State<HomeScreen> {
               child: Column(
                 children: _data == null
                     ? []
-                    : [
-                        ArticleCarousel(
-                            articles: _data!.articles.getRange(0, 10).toList())
-                      ],
+                    : [ArticleCarousel(articles: _data!.articles)],
               ),
             ),
           )
