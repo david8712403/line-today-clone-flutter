@@ -80,4 +80,7 @@ class Format {
   static final birthday = DateFormat('yyyy-MM-dd');
 }
 
-class MKey {}
+class MKey {
+  static final API_HOST = "API_HOST";
+  static final API_KEY = "API_KEY";
+}
