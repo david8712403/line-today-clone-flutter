@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:line_today_clone/component/article_carousel.dart';
+import 'package:line_today_clone/component/article_list.dart';
 import 'package:line_today_clone/component/category_list.dart';
 import 'package:line_today_clone/model/news_service/request/top_headlines_request.dart';
 import 'package:line_today_clone/model/news_service/response/everything_response.dart';
@@ -50,18 +51,40 @@ class _MyHomePageState extends State<HomeScreen> {
               });
             }),
           ),
-          // TODO: Top-headlines & list
-          Expanded(
-            child: SingleChildScrollView(
-              primary: true,
-              child: Column(
-                children: _data == null
-                    ? []
-                    : [ArticleCarousel(articles: _data!.articles)],
-              ),
-            ),
-          )
+          buildBody()
         ],
+      ),
+    );
+  }
+
+  Widget buildBody() {
+    List<Widget> widgets = _data == null
+        ? [
+            // TODO: No data view
+          ]
+        : [
+            ArticleCarousel(
+              articles: _data!.articles.getRange(0, 5).toList(),
+              onArticlePressed: (article) {
+                // TODO: Add content view navigate
+                log("article ${article.title} pressed");
+              },
+            ),
+            const SizedBox(height: Dimen.DEF_MARGIN),
+            ArticleList(
+              articles: _data!.articles
+                  .getRange(5, _data!.articles.length - 1)
+                  .toList(),
+              onArticlePressed: (article) {
+                // TODO: Add content view navigate
+                log("article ${article.title} pressed");
+              },
+            )
+          ];
+    return Expanded(
+      child: SingleChildScrollView(
+        primary: true,
+        child: Column(children: widgets),
       ),
     );
   }

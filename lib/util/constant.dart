@@ -81,6 +81,8 @@ class Format {
 }
 
 class MKey {
+  // ignore: prefer_const_declarations, non_constant_identifier_names
   static final API_HOST = "API_HOST";
+  // ignore: prefer_const_declarations, non_constant_identifier_names
   static final API_KEY = "API_KEY";
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -54,7 +52,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       supportedLocales: S.delegate.supportedLocales,
       initialRoute: '/',
       home: const RootWidget(),
-      routes: <String, WidgetBuilder>{},
+      routes: const <String, WidgetBuilder>{},
     );
   }
 }
@@ -99,6 +97,6 @@ class _RootWidgetState extends State<RootWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScreen();
+    return const HomeScreen();
   }
 }

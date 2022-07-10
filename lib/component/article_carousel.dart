@@ -1,13 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:line_today_clone/model/news_service/article.dart';
 import 'package:line_today_clone/util/constant.dart';
 
 class ArticleCarousel extends StatefulWidget {
-  const ArticleCarousel({Key? key, required this.articles}) : super(key: key);
+  const ArticleCarousel({
+    Key? key,
+    required this.articles,
+    required this.onArticlePressed,
+  }) : super(key: key);
   final List<NewsArticle> articles;
+  final void Function(NewsArticle) onArticlePressed;
 
   @override
   State<ArticleCarousel> createState() => _ArticleCarouselState();
@@ -25,47 +28,51 @@ class _ArticleCarouselState extends State<ArticleCarousel> {
       alignment: Alignment.bottomCenter,
       children: [
         buildArticleImages(size),
-        CarouselSlider(
-          options: CarouselOptions(
-            height: size.width * (3 / 4),
-            viewportFraction: 1.0,
-            autoPlay: true,
-            onScrolled: (value) {
-              final roundValue = value!.roundToDouble();
-              final diff = (roundValue - value).abs() * 2;
-              setState(() => _alpha = (255 * diff).toInt());
-            },
-            onPageChanged: (index, reason) {
-              setState(() => _current = index);
-            },
-          ),
-          carouselController: _controller,
-          items: widget.articles.map((element) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    SizedBox(width: size.width, height: size.width * (9 / 16)),
-                    Container(
-                      color: Colors.white,
-                      width: size.width,
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: Dimen.DEF_MARGIN,
-                        vertical: Dimen.DEF_PADDING,
-                      ),
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.articles[_current].title,
-                        style: Font.HEADING_3,
-                        maxLines: 2,
-                      ),
-                    ),
-                  ],
-                );
+        GestureDetector(
+          onTap: () => widget.onArticlePressed(widget.articles[_current]),
+          child: CarouselSlider(
+            options: CarouselOptions(
+              height: size.width * (3 / 4),
+              viewportFraction: 1.0,
+              autoPlay: true,
+              onScrolled: (value) {
+                final roundValue = value!.roundToDouble();
+                final diff = (roundValue - value).abs() * 2;
+                setState(() => _alpha = (255 * diff).toInt());
               },
-            );
-          }).toList(),
+              onPageChanged: (index, reason) {
+                setState(() => _current = index);
+              },
+            ),
+            carouselController: _controller,
+            items: widget.articles.map((element) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      SizedBox(
+                          width: size.width, height: size.width * (9 / 16)),
+                      Container(
+                        color: Colors.white,
+                        width: size.width,
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: Dimen.DEF_MARGIN,
+                          vertical: Dimen.DEF_PADDING,
+                        ),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          widget.articles[_current].title,
+                          style: Font.HEADING_3,
+                          maxLines: 2,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }).toList(),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
