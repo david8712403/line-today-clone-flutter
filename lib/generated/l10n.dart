@@ -110,6 +110,16 @@ class S {
     );
   }
 
+  /// `發生錯誤`
+  String get something_wrong {
+    return Intl.message(
+      '發生錯誤',
+      name: 'something_wrong',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `運動`
   String get sports {
     return Intl.message(

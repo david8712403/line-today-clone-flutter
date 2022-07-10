@@ -63,14 +63,16 @@ class ArticleListItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  article.title,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: true,
-                  style: const TextStyle(
-                    fontSize: Dimen.HEADING_3_TEXT_SIZE,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    article.title,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: true,
+                    style: const TextStyle(
+                      fontSize: Dimen.HEADING_3_TEXT_SIZE,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Text(

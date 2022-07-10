@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "general": MessageLookupByLibrary.simpleMessage("general"),
         "health": MessageLookupByLibrary.simpleMessage("health"),
         "science": MessageLookupByLibrary.simpleMessage("science"),
+        "something_wrong":
+            MessageLookupByLibrary.simpleMessage("something wrong"),
         "sports": MessageLookupByLibrary.simpleMessage("sports"),
         "technology": MessageLookupByLibrary.simpleMessage("technology")
       };

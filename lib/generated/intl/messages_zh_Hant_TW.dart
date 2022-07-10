@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "general": MessageLookupByLibrary.simpleMessage("一般"),
         "health": MessageLookupByLibrary.simpleMessage("健康"),
         "science": MessageLookupByLibrary.simpleMessage("科學"),
+        "something_wrong": MessageLookupByLibrary.simpleMessage("發生錯誤"),
         "sports": MessageLookupByLibrary.simpleMessage("運動"),
         "technology": MessageLookupByLibrary.simpleMessage("科技")
       };

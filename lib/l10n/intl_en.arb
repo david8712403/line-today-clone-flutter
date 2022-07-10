@@ -5,6 +5,7 @@
   "general": "general",
   "health": "health",
   "science": "science",
+  "something_wrong": "something wrong",
   "sports": "sports",
   "technology": "technology"
 }

@@ -5,16 +5,27 @@ import 'package:line_today_clone/model/news_service/response/response_base.dart'
 import 'package:line_today_clone/util/constant.dart';
 
 class MAlertDialog extends StatelessWidget {
-  const MAlertDialog({Key? key, required this.error}) : super(key: key);
-  final DioError error;
+  const MAlertDialog({
+    Key? key,
+    this.error,
+    this.errorTitle,
+    this.errorDetail,
+  }) : super(key: key);
+  final DioError? error;
+  final String? errorTitle;
+  final String? errorDetail;
 
   @override
   Widget build(BuildContext context) {
-    String errorDetail = "Unknown error";
-    if (error.response != null) {
+    String _errorTitle = "Unknown error";
+    String _errorDetail = "Unknown error";
+    if (error != null && error!.response != null) {
       // final status = error.response!.data;
-      final detail = NewsResponseBase.fromMap(error.response!.data);
-      errorDetail = detail.message;
+      final detail = NewsResponseBase.fromMap(error?.response!.data);
+      _errorDetail = detail.message;
+    } else {
+      _errorTitle = errorTitle ?? _errorTitle;
+      _errorDetail = errorDetail ?? _errorDetail;
     }
     return AlertDialog(
         content: SizedBox(
@@ -23,9 +34,9 @@ class MAlertDialog extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(error.message, style: Font.HEADING_3),
+            Text(_errorTitle, style: Font.HEADING_3),
             ExpandableText(
-              errorDetail,
+              _errorDetail,
               expandText: 'more',
               collapseText: 'less',
               maxLines: 3,
